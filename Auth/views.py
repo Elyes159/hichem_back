@@ -3,9 +3,10 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.contrib.auth.models import User
 
-from Auth.models import Employe
 from django.http import JsonResponse
 from django.contrib.auth.hashers import check_password
+
+from Auth.models import Admin, SuperAdmin, Utilisateur
 
 
 
@@ -16,8 +17,11 @@ def login_employee(request) :
         username = data.get("username")
         password = data.get("password")
         user = User.objects.get(username = username)
+        superAdmin = SuperAdmin.objects.filter(user = user).exists()
+        admin = Admin.objects.filter(user = user).exists()
+        utilisateur = Utilisateur.objects.filter(user = user).exists()
         if check_password(password, user.password):
-                return JsonResponse({'message': 'Connexion réussie', 'status': 'success'}, status=200)
+                return JsonResponse({'message': 'Connexion réussie','superAdmin':superAdmin,'admin':admin,'utilisateur':utilisateur}, status=200)
         else:
                 return JsonResponse({'message': 'Mot de passe incorrect', 'status': 'failed'}, status=400)
         
