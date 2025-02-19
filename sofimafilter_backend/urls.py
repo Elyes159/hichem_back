@@ -22,6 +22,12 @@ from Auth import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('login/',v.login_employee , name="login"),
-     path('getArticles/',views.get_articles , name="get"),
+    path('login/',v.login_employee , name="login"),
+    path('getArticles/',views.get_articles , name="get"),
+    path('getComposant/',views.get_composant , name="get"),
+    path('updateQ/',views.update_quantite , name="update"),
+    path('updateQC/',views.update_quantiteC , name="update"),
+    path('adda/',views.add_article , name="add"),
+    path('addC/',views.add_composant , name="addc"),
+
 ]
