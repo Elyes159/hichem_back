@@ -29,5 +29,11 @@ urlpatterns = [
     path('updateQC/',views.update_quantiteC , name="update"),
     path('adda/',views.add_article , name="add"),
     path('addC/',views.add_composant , name="addc"),
-
+    path('block_admin/<str:email>/',v.block_admin , name="block_admin"),
+    path('block_user/<str:email>/',v.block_user , name="block_user"),
+    path('dblock_admin/<str:email>/',v.dblock_admin , name="block_admin"),
+    path('dblock_user/<str:email>/',v.dblock_user , name="block_user"),
+    path('delete_user/<str:email>/',v.delete_user , name="block_user"),
+    path('delete_admin/<str:email>/',v.delete_admin , name="block_user"),
+    path('getUsers/<str:is_admin>/<str:is_super_Admin>/',v.get_users , name="get_users"),
 ]
